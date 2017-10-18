@@ -11,6 +11,9 @@ import (
 type greeter struct{}
 
 func (*greeter) SayHello(ctx context.Context, in *HelloRequest) (*HelloReply, error) {
+	if in.Name == "Dave" {
+		return &HelloReply{Message: "I can't let you do that, Dave"}, nil
+	}
 	return &HelloReply{Message: "Hello " + in.Name}, nil
 }
 
